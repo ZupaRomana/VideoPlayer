@@ -1,3 +1,4 @@
+import MovieModel from "../models/movie-model.js";
 
 export default class MovieService {
 
@@ -41,6 +42,10 @@ export default class MovieService {
   }
 
   getMovies(){
-
+    return this.rawData.movie.filter(movie => {
+      if (movie) {
+        return movie;
+      }
+    }).map(movie => new MovieModel(movie));
   }
 }
