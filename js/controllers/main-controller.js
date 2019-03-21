@@ -6,7 +6,12 @@ export default class MainController {
     this.movies = null;
     this.element = null;
   }
+
   run() {
+    this.setup();
+  }
+
+  setup() {
     this.initializeMovies();
     this.renderHtml();
     this.initializeElement();
