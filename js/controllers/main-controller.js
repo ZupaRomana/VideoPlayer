@@ -1,4 +1,6 @@
 
+import FormController from './form-controller.js';
+
 export default class MainController {
   constructor(service, parentElement) {
     this.service = service;
@@ -9,6 +11,7 @@ export default class MainController {
 
   run() {
     this.setup();
+    this.buildChildren();
   }
 
   setup() {
@@ -27,5 +30,14 @@ export default class MainController {
 
   initializeElement() {
     this.element = document.getElementById('main');
+  }
+
+  buildChildren() {
+    this.buildFormController();
+  }
+
+  buildFormController() {
+    const formController = new FormController(this.element);
+    formController.run();
   }
 }
