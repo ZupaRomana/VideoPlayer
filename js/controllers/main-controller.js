@@ -1,5 +1,5 @@
 
-import FormController from './form-controller.js';
+import InputController from './input-controller.js';
 
 export default class MainController {
   constructor(service, parentElement) {
@@ -33,11 +33,11 @@ export default class MainController {
   }
 
   buildChildren() {
-    this.buildFormController();
+    this.buildInputController();
   }
 
-  buildFormController() {
-    const formController = new FormController(this.element);
-    formController.run();
+  buildInputController() {
+    const inputController = new InputController(this.element);
+    inputController.run();
   }
 }
