@@ -16,20 +16,20 @@ export default class MainController {
 
   setup() {
     this.initializeMovies();
-    this.renderHtml();
     this.initializeElement();
+    this.renderHtml();
   }
 
   initializeMovies() {
     this.movies = this.service.getMovies();
   }
 
-  renderHtml() {
-    this.parentElement.innerHTML = `<main id="main"></main>`;
+  initializeElement() {
+    this.element = document.createElement('main');
   }
 
-  initializeElement() {
-    this.element = document.getElementById('main');
+  renderHtml() {
+    this.parentElement.appendChild(this.element);
   }
 
   buildChildren() {

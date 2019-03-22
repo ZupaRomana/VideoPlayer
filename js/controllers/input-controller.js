@@ -10,17 +10,18 @@ export default class InputController {
   }
 
   setup() {
-    this.renderHtml();
     this.initializeElement();
+    this.renderHtml();
     this.setupEventEmitter();
   }
 
-  renderHtml() {
-    this.parentElement.innerHTML = `<input id="search-movie-input">`
+  initializeElement() {
+    this.element = document.createElement('input');
+    this.element.setAttribute('id', 'search-movie-input');
   }
 
-  initializeElement() {
-    this.element = document.getElementById('search-movie-input');
+  renderHtml() {
+    this.parentElement.appendChild(this.element);
   }
 
   setupEventEmitter() {
