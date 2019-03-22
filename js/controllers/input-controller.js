@@ -24,5 +24,13 @@ export default class InputController {
   }
 
   setupEventEmitter() {
+    this.element.addEventListener('keyup', () => {
+      const event = this.createEvent();
+      this.parentElement.dispatchEvent(event);
+    });
+  }
+
+  createEvent() {
+    return new CustomEvent('input-change', { detail: this.element.value.toUpperCase() });
   }
 }
