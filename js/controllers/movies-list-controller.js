@@ -49,9 +49,7 @@ export default class MoviesListController {
 
   refresh(input) {
     this.clearParent();
-    this.initializeElement();
     this.filterMovies(input);
-    this.renderHtml();
   }
 
   clearParent() {
