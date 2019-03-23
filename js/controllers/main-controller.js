@@ -1,6 +1,7 @@
 
 import InputController from './input-controller.js';
 import MoviesListController from './movies-list-controller.js';
+import MovieController from './movie-controller.js';
 
 export default class MainController {
   constructor(service, parentElement) {
@@ -59,9 +60,28 @@ export default class MainController {
 
   registerEventListeners() {
     this.element.addEventListener('input-change', (e) => this.handleInputChange(e.detail));
+    this.element.addEventListener('movie-selected', (e) => this.handleMovieSelection(e.detail));
   }
 
   handleInputChange(input) {
     this.moviesListController.refresh(input);
+  }
+
+  handleMovieSelection(movie) {
+    this.clearMoviePlaceholder();
+    this.createMovieController(movie);
+  }
+
+  clearMoviePlaceholder() {
+    const placeHolder = document.getElementById('movie-placeholder');
+    while (placeHolder.firstChild) {
+      placeHolder.removeChild(placeHolder.firstChild);
+    }
+  }
+
+  createMovieController(movie) {
+    const placeHolder = document.getElementById('movie-placeholder');
+    const movieController = new MovieController(movie, placeHolder);
+    movieController.run();
   }
 }
