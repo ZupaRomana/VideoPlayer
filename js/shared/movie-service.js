@@ -42,10 +42,17 @@ export default class MovieService {
   }
 
   getMovies(){
-    return this.rawData.movie.filter(movie => {
-      if (movie) {
-        return movie;
-      }
-    }).map(movie => new MovieModel(movie));
+    return this.rawData.movie.filter(movie => movie).map(movie => MovieService.parseToMovieObject(movie));
+  }
+
+  static parseToMovieObject(movie) {
+    const movieModel = {
+      id: movie.id,
+      url: movie.url,
+      title: movie.title ? movie.title : movie.name,
+      description: movie.description
+    };
+    return movie.title ? new MovieModel(movieModel)
+                       : new MovieModel(movieModel);
   }
 }
