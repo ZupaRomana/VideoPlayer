@@ -58,6 +58,10 @@ export default class MainController {
   }
 
   registerEventListeners() {
-    this.element.addEventListener('input-change', (e) => this.moviesListController.refresh(e.detail));
+    this.element.addEventListener('input-change', (e) => this.handleInputChange(e.detail));
+  }
+
+  handleInputChange(input) {
+    this.moviesListController.refresh(input);
   }
 }
