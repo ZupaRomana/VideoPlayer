@@ -37,12 +37,19 @@ export default class MainController {
 
   buildChildren() {
     this.buildInputController();
+    this.createMoviePlaceholder();
     this.buildMoviesListController();
   }
 
   buildInputController() {
     const inputController = new InputController(this.element);
     inputController.run();
+  }
+
+  createMoviePlaceholder() {
+    const moviePlaceholder = document.createElement('span');
+    moviePlaceholder.setAttribute('id', 'movie-placeholder');
+    this.element.appendChild(moviePlaceholder);
   }
 
   buildMoviesListController() {
