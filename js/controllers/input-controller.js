@@ -32,6 +32,6 @@ export default class InputController {
   }
 
   createEvent() {
-    return new CustomEvent('input-change', { detail: this.element.value.toUpperCase() });
+    return new CustomEvent('input-change', { detail: this.element.value });
   }
 }
