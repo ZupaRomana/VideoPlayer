@@ -4,6 +4,7 @@ export default class MovieController {
     this.movie = movie;
     this.parentElement = parentElement;
     this.element = null;
+    this.video = null;
   }
 
   run() {
@@ -19,15 +20,14 @@ export default class MovieController {
   }
 
   initializeVideo() {
-    let video;
     if (this.movie.url) {
-      video = document.createElement('video');
-      video.setAttribute('src', this.movie.url);
+      this.video = document.createElement('video');
+      this.video.setAttribute('src', this.movie.url);
     } else {
-      video = document.createElement('section');
-      video.innerHTML = 'Video not found';
+      this.video = document.createElement('section');
+      this.video.innerHTML = 'Video not found';
     }
-    this.element.appendChild(video);
+    this.element.appendChild(this.video);
   }
 
   initializeTitle() {
