@@ -37,4 +37,17 @@ export default class MoviesListController {
   renderHtml() {
     this.parentElement.appendChild(this.element);
   }
+
+  refresh(input) {
+    this.clearParent();
+    this.initializeElement();
+    this.filterMovies(input);
+    this.renderHtml();
+  }
+
+  clearParent() {
+    while (this.element.firstChild) {
+      this.element.removeChild(this.element.firstChild);
+    }
+  }
 }
