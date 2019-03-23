@@ -23,8 +23,7 @@ export default class MoviesListController {
 
   filterMovies(input) {
     this.movies.filter(movie => movie.titleOrDescriptionIncludes(input.toUpperCase())).forEach(movie => {
-      const titleElement = document.createElement('dt');
-      titleElement.innerText = movie.title;
+      const titleElement = this.createTitleElement(movie);
 
       const descriptionElement = document.createElement('dd');
       descriptionElement.innerText = movie.description;
@@ -32,6 +31,16 @@ export default class MoviesListController {
       this.element.appendChild(titleElement);
       this.element.appendChild(descriptionElement);
     });
+  }
+
+  createTitleElement(movie) {
+    const titleElement = document.createElement('dt');
+    titleElement.innerText = movie.title;
+    titleElement.addEventListener('click', () => {
+      const event = new CustomEvent('movie-selected', { detail: movie });
+      this.parentElement.dispatchEvent(event);
+    });
+    return titleElement;
   }
 
   renderHtml() {
