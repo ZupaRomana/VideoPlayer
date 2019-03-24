@@ -18,6 +18,8 @@ export default class InputController {
   initializeElement() {
     this.element = document.createElement('input');
     this.element.setAttribute('id', 'search-movie-input');
+    this.element.setAttribute('class', 'form-control text-center my-3');
+    this.element.setAttribute('placeholder', 'Search movies');
   }
 
   renderHtml() {
