@@ -9,15 +9,15 @@ export default class MovieController {
 
   run() {
     this.initializeElement();
-    if (this.video.tagName === 'VIDEO') {
-      this.registerVideoControls();
-    }
     this.renderHtml();
   }
 
   initializeElement() {
     this.element = document.createElement('div');
     this.initializeVideo();
+    if (this.video.tagName === 'VIDEO') {
+      this.registerVideoControls();
+    }
     this.initializeTitle();
     this.initializeDescription();
   }
@@ -29,18 +29,21 @@ export default class MovieController {
     } else {
       this.video = document.createElement('section');
       this.video.innerHTML = 'Video not found';
+      this.video.setAttribute('class', 'alert alert-danger');
     }
     this.element.appendChild(this.video);
   }
 
   initializeTitle() {
     const section = document.createElement('section');
+    section.setAttribute('class', 'font-weight-bold m-3');
     section.innerText = this.movie.title;
     this.element.appendChild(section);
   }
 
   initializeDescription() {
     const section = document.createElement('section');
+    section.setAttribute('class', 'm-3')
     section.innerText = this.movie.description;
     this.element.appendChild(section);
   }
@@ -65,7 +68,10 @@ export default class MovieController {
     frameForward.addEventListener('click', () => this.handleFrameForward());
     frameBackward.addEventListener('click', () => this.handleFrameBackward());
 
-    [play, pause, speedDown, frameForward, frameBackward].forEach(button => controls.appendChild(button));
+    [play, pause, speedDown, frameForward, frameBackward].forEach(button => {
+      button.setAttribute('class', 'btn btn-outline-secondary mx-1');
+      controls.appendChild(button);
+    });
     this.element.appendChild(controls);
   }
 

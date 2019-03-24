@@ -30,6 +30,7 @@ export default class MainController {
 
   initializeElement() {
     this.element = document.createElement('main');
+    this.element.setAttribute('class', 'container');
   }
 
   renderHtml() {
