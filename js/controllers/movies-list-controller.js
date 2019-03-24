@@ -7,13 +7,9 @@ export default class MoviesListController {
   }
 
   run() {
-    this.setup();
-  }
-
-  setup() {
     this.initializeElement();
     this.filterMovies('');
-    this.renderHtml();
+    this.render();
   }
 
   initializeElement() {
@@ -25,11 +21,7 @@ export default class MoviesListController {
   filterMovies(input) {
     this.movies.filter(movie => movie.titleOrDescriptionIncludes(input.toUpperCase())).forEach(movie => {
       const titleElement = this.createTitleElement(movie);
-
-      const descriptionElement = document.createElement('dd');
-      descriptionElement.setAttribute('class', 'list-group-item mb-3');
-      descriptionElement.innerText = movie.description;
-
+      const descriptionElement = this.createDescriptionElement(movie);
       this.element.appendChild(titleElement);
       this.element.appendChild(descriptionElement);
     });
@@ -48,16 +40,22 @@ export default class MoviesListController {
     return titleElement;
   }
 
-  renderHtml() {
+  createDescriptionElement(movie) {
+    const descriptionElement = document.createElement('dd');
+    descriptionElement.setAttribute('class', 'list-group-item mb-3');
+    descriptionElement.innerText = movie.description;
+  }
+
+  render() {
     this.parentElement.appendChild(this.element);
   }
 
-  refresh(input) {
-    this.clearParent();
+  reloadResults(input) {
+    this.clearParentElement();
     this.filterMovies(input);
   }
 
-  clearParent() {
+  clearParentElement() {
     while (this.element.firstChild) {
       this.element.removeChild(this.element.firstChild);
     }

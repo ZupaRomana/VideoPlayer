@@ -61,7 +61,7 @@ export default class MainController {
   }
 
   handleInputChange(input) {
-    this.moviesListController.refresh(input);
+    this.moviesListController.reloadResults(input);
   }
 
   handleMovieSelection(movie) {
