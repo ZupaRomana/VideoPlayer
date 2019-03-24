@@ -44,6 +44,7 @@ export default class MoviesListController {
     const descriptionElement = document.createElement('dd');
     descriptionElement.setAttribute('class', 'list-group-item mb-3');
     descriptionElement.innerText = movie.description;
+    return descriptionElement;
   }
 
   render() {
