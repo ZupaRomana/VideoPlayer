@@ -39,6 +39,8 @@ export default class MoviesListController {
     const titleElement = document.createElement('dt');
     titleElement.setAttribute('class', 'list-group-item bg-info');
     titleElement.innerText = movie.title;
+    titleElement.addEventListener('mouseout', () => titleElement.innerText = movie.title);
+    titleElement.addEventListener('mouseover', () => titleElement.innerText = `${movie.title} - Play the movie`);
     titleElement.addEventListener('click', () => {
       const event = new CustomEvent('movie-selected', { detail: movie });
       this.parentElement.dispatchEvent(event);
