@@ -13,15 +13,11 @@ export default class MainController {
   }
 
   run() {
-    this.setup();
-    this.buildChildren();
-    this.registerEventListeners();
-  }
-
-  setup() {
     this.initializeMovies();
     this.initializeElement();
-    this.renderHtml();
+    this.buildChildrenHTMLElements();
+    this.render();
+    this.registerEventListeners();
   }
 
   initializeMovies() {
@@ -33,11 +29,11 @@ export default class MainController {
     this.element.setAttribute('class', 'container');
   }
 
-  renderHtml() {
+  render() {
     this.parentElement.appendChild(this.element);
   }
 
-  buildChildren() {
+  buildChildrenHTMLElements() {
     this.buildInputController();
     this.createMoviePlaceholder();
     this.buildMoviesListController();
@@ -65,7 +61,7 @@ export default class MainController {
   }
 
   handleInputChange(input) {
-    this.moviesListController.refresh(input);
+    this.moviesListController.reloadResults(input);
   }
 
   handleMovieSelection(movie) {
