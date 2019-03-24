@@ -52,7 +52,6 @@ export default class MovieService {
       title: movie.title ? movie.title : movie.name,
       description: movie.description
     };
-    return movie.title ? new MovieModel(movieModel)
-                       : new MovieModel(movieModel);
+    return new MovieModel(movieModel);
   }
 }
