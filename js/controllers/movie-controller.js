@@ -70,23 +70,32 @@ export default class MovieController {
   }
 
   handlePlay() {
-    
+    this.video.play();
   }
 
   handlePause() {
-
+    this.video.pause();
   }
 
   handleSpeedDown() {
-
+    switch(this.video.playbackRate) {
+      case 1: return this.video.playbackRate = 0.75;
+      case 0.75: return this.video.playbackRate = 0.5;
+      case 0.5: return this.video.playbackRate = 0.25;
+      default: return 0.25;
+    }
   }
 
   handleFrameForward() {
-
+    if (this.video.paused) {
+      this.video.currentTime += 0.041667;
+    }
   }
 
   handleFrameBackward() {
-
+    if (this.video.paused) {
+      this.video.currentTime -= 0.041667;
+    }
   }
 
   renderHtml() {
