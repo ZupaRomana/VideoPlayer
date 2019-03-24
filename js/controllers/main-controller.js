@@ -39,8 +39,8 @@ export default class MainController {
 
   buildChildren() {
     this.buildInputController();
-    this.buildMoviesListController();
     this.createMoviePlaceholder();
+    this.buildMoviesListController();
   }
 
   buildInputController() {
