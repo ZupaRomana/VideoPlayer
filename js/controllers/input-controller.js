@@ -6,10 +6,6 @@ export default class InputController {
   }
 
   run() {
-    this.setup();
-  }
-
-  setup() {
     this.initializeElement();
     this.renderHtml();
     this.setupEventEmitter();
