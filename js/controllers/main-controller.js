@@ -30,6 +30,7 @@ export default class MainController {
 
   initializeElement() {
     this.element = document.createElement('main');
+    this.element.setAttribute('class', 'container');
   }
 
   renderHtml() {
@@ -38,8 +39,8 @@ export default class MainController {
 
   buildChildren() {
     this.buildInputController();
-    this.createMoviePlaceholder();
     this.buildMoviesListController();
+    this.createMoviePlaceholder();
   }
 
   buildInputController() {
