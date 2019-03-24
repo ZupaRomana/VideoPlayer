@@ -9,7 +9,7 @@ export default class MovieController {
 
   run() {
     this.initializeElement();
-    this.renderHtml();
+    this.render();
   }
 
   initializeElement() {
@@ -104,7 +104,7 @@ export default class MovieController {
     }
   }
 
-  renderHtml() {
+  render() {
     this.parentElement.appendChild(this.element);
   }
 }
